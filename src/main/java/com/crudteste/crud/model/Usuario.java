@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 public class Usuario {
 
     // @NotBlank (message = "O id não pode estar vazio")
