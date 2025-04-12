@@ -1,5 +1,6 @@
 package com.crudteste.crud.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -17,43 +18,36 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Setter
 @Getter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Usuario {
 
-    // @NotBlank (message = "O id não pode estar vazio")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank (message = "O nome não pode estar em branco")
+    @NotBlank(message = "O nome não pode estar em branco")
     private String nome;
 
-    @Email (message = "O email está incorreto")
-    @Column (unique = true, nullable = false)
-    @NotBlank (message = "O email é obrigatório")
+    @Email(message = "O email está incorreto")
+    @Column(unique = true, nullable = false)
+    @NotBlank(message = "O email é obrigatório")
     private String email;
 
-    @NotBlank (message = "A senha não pode estar vazia")
-    // @Size (min = 8, message = "A senha deve ter no minimo 8 caracteres")
-    // @Size (max = 15, message = "A senha deve ter no maximo 15 caracteres")
-    @Pattern (
-            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,16}$",
-            message = "A senha deve ter pelo menos 8 caracteres, uma letra maiuscula e uma minuscula"
-    )
+    @NotBlank(message = "A senha não pode estar vazia")
     private String senha;
 
-    @Enumerated (EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
-    @NotNull (message = "O telefone não pode estar vazio")
-    // @Column (unique = true)
+    @NotNull(message = "O telefone não pode estar vazio")
     @Pattern(
             regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}",
             message = "Telefone inválido. Formato esperado: (11) 99999-9999"
     )
     private String telefone;
 
-    @CPF (message = "CPF Inválido")
-    @Column (unique = true, nullable = false)
+    @CPF(message = "CPF Inválido")
+    @Column(unique = true, nullable = false)
     private String cpf;
 
     @CreationTimestamp
@@ -63,5 +57,4 @@ public class Usuario {
     private LocalDateTime updatedAt;
 
     private boolean active = true;
-
 }

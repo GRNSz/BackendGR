@@ -16,13 +16,16 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping("/salvar")
     public ResponseEntity<Usuario> salvar(@RequestBody @Valid Usuario usuario) {
-        Usuario novo = usuarioService.salvarUsuario(usuario);
-        return ResponseEntity.ok(novo);
+        usuarioService.salvarUsuario(usuario);
+
+        System.out.println("Usuario salvo com sucesso: " + usuario.getNome());
+        System.out.println("Senha salva com sucesso: " + usuario.getSenha());
+        return ResponseEntity.ok(usuario);
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Usuario>> listarTodos() {
         return ResponseEntity.ok(usuarioService.listarTodos());
     }
@@ -49,5 +52,7 @@ public class UsuarioController {
         usuarioService.deletarUsuario(id);
         return ResponseEntity.noContent().build();
     }
+
+
 
 }
