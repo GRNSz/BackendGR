@@ -84,4 +84,12 @@ public class UsuarioService {
             throw new IllegalArgumentException("A senha deve ter pelo menos 8 caracteres, uma letra maiúscula e uma minúscula, e um caractere especial!");
         }
     }
+
+    // Metodo de validação de telefone
+    private void validarTelefone(String telefone) {
+        if (!telefone.matches("\\d{3}-\\d{3}-\\d{4}")) {
+            throw new IllegalArgumentException("O telefone deve estar no padrão: (11) 99999-9999");
+        }
+    }
+
 }

@@ -40,10 +40,10 @@ public class Usuario {
     private Role role;
 
     @NotNull(message = "O telefone não pode estar vazio")
-    @Pattern(
-            regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}",
-            message = "Telefone inválido. Formato esperado: (11) 99999-9999"
-    )
+    // @Pattern(
+            // regexp = "\\(\\d{2}\\) \\d{4,5}-\\d{4}",
+            // message = "Telefone inválido. Formato esperado: (11) 99999-9999"
+    // )
     private String telefone;
 
     @CPF(message = "CPF Inválido")
