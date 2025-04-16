@@ -16,7 +16,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
+    @PostMapping("/salvar")
     public ResponseEntity<Usuario> salvar(@RequestBody @Valid Usuario usuario) {
         Usuario novo = usuarioService.salvarUsuario(usuario);
         return ResponseEntity.ok(novo);
