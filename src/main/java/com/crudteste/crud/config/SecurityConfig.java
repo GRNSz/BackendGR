@@ -16,14 +16,11 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // .csrf().disable() // desabilita CSRF (pra facilitar em dev/teste com Insomnia)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/usuarios/**").permitAll() // libera tudo que for /usuarios
-                        .anyRequest().authenticated() // o resto precisa estar autenticado
+                        .anyRequest().permitAll()
                 );
-
         return http.build();
     }
 
