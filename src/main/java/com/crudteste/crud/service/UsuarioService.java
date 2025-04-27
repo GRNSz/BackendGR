@@ -52,11 +52,11 @@ public class UsuarioService {
     }
 
     public Usuario atualizarUsuario(Long id, Usuario usuarioAtualizado) {
-        Optional<Usuario> existente = usuarioRepository.findById(id);
+        Optional<Usuario> UsuarioExistente = usuarioRepository.findById(id);
 
         // Verifica se o usuário existe antes de atualizar
-        if (existente.isPresent()) {
-            Usuario usuario = existente.get();
+        if (UsuarioExistente.isPresent()) {
+            Usuario usuario = UsuarioExistente.get();
             usuario.setNome(usuarioAtualizado.getNome());
             usuario.setEmail(usuarioAtualizado.getEmail());
             usuario.setCpf(usuarioAtualizado.getCpf());
